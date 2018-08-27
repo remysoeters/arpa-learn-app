@@ -12,7 +12,7 @@ app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
 // server config
-let port = 3000
+const port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/public'))
 
