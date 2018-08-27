@@ -4,15 +4,17 @@
 const express = require('express')
 const hbs = require('hbs')
 
-var app = express();
+// server setup
+const port = process.env.PORT || 3000
 
+var app = express();
 
 // hbs setup
 app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
 // server config
-const port = process.env.PORT || 3000
+
 
 app.use(express.static(__dirname + '/public'))
 
