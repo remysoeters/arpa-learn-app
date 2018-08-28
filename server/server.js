@@ -76,12 +76,12 @@ app.get('/questions/:id', (req, res)=>{
 
 
 
-app.get('/',(req, res)=> {
-    res.render('vragenlijst.hbs', {
-        pageTitle:'Vragenlijst',
-        copyrightDate: new Date().getFullYear()
-    })
-})
+// app.get('/',(req, res)=> {
+//     res.render('vragenlijst.hbs', {
+//         pageTitle:'Vragenlijst',
+//         copyrightDate: new Date().getFullYear()
+//     })
+// })
 
 app.get('/login', (request, response)=>{
     response.render('login.hbs', {
