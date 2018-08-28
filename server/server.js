@@ -3,13 +3,14 @@
 // library imports
 const express = require('express')
 const hbs = require('hbs')
-const {mongoose} = require('./db/mongoose')
+
 const bodyParser = require('body-parser')
 const {ObjectID} = require('mongodb')
 
 // local imports
 const {User} = require('./models/userModel')
 const {Question} = require('./models/questionModel')
+const {mongoose} = require('./db/mongoose')
 
 // server setup
 const port = process.env.PORT || 3000;
@@ -17,14 +18,14 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
-// hbs setup
-app.set('view engine', 'hbs')
-hbs.registerPartials(__dirname + '/views/partials')
+// // hbs setup
+// app.set('view engine', 'hbs')
+// hbs.registerPartials(__dirname + '/views/partials')
 
 // server config
 
 
-app.use(express.static(__dirname + '/public'))
+// app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
 
 app.post('/questions', (req, res)=> {
