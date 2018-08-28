@@ -9,7 +9,7 @@ MongoClient.connect(dbUrl, (error, client) =>{
        return console.log('Error; Database connection failed')
     }
 
-    console.log('connected to MongoDB server')
+    console.log('Test')
     const db = client.db(database)
     const collection = 'questions'
 

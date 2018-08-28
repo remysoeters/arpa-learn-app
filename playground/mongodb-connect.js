@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const database = 'arpa-learn-database'
+const database = 'arpa-learn-app'
 const dbUrl = `mongodb://localhost:27017/${database}`
 
 

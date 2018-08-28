@@ -1,9 +1,3 @@
-const {MongoClient, ObjectID} = require('mongodb')
-const database = 'arpa-learn-database'
-const dbUrl = `mongodb://localhost:27017/${database}`
-
-
-
 MongoClient.connect(dbUrl, (error, client) =>{
     if(error){
        return console.log('Error; Database connection failed')

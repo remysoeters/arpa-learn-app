@@ -18,14 +18,6 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
-// // hbs setup
-// app.set('view engine', 'hbs')
-// hbs.registerPartials(__dirname + '/views/partials')
-
-// server config
-
-
-// app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
 
 app.post('/questions', (req, res)=> {
@@ -46,6 +38,29 @@ app.post('/questions', (req, res)=> {
         res.status(400).send(error)
 
     })
+})
+
+app.delete('/questions/:id', (req, res)=>{
+    // get ID from param
+    const id = req.params.id
+
+
+    //validate id with objectID > return 404
+    if(!ObjectID.isValid(id)){
+       return res.status(404).send()
+    }
+    // remove the todo by id
+    Question.findByIdAndRemove(id).then((document)=>{
+        if(!document){
+            return res.status(404).send()
+        }
+        res.send(id)
+    }).catch((error)=>{
+        res.status(400).send()
+    })
+        // succes > 
+            // if(!document){send()}
+        // error > 400 > send()
 })
 
 app.get('/questions', (req, res)=>{
@@ -75,26 +90,6 @@ app.get('/questions/:id', (req, res)=>{
 
 })
 
-
-
-// app.get('/',(req, res)=> {
-//     res.render('vragenlijst.hbs', {
-//         pageTitle:'Vragenlijst',
-//         copyrightDate: new Date().getFullYear()
-//     })
-// })
-
-// app.get('/login', (request, response)=>{
-//     response.render('login.hbs', {
-//         pageTitle:'login page'
-//     })
-// })
-
-// app.get('/arpist', (request, response)=>{
-//     response.render('arpisten.hbs', {
-//         pageTitle:'ARPISTEN panel'
-//     })
-// })
 
 app.listen(port, ()=>{
     console.log(`Server is up on port ${port}`)

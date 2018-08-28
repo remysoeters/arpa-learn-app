@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Question = mongoose.model('Question', {
+const Question = mongoose.model('Questions', {
     category:{
         type: String,
         required:true,
