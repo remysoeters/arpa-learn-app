@@ -84,17 +84,17 @@ app.get('/questions/:id', (req, res)=>{
 //     })
 // })
 
-app.get('/login', (request, response)=>{
-    response.render('login.hbs', {
-        pageTitle:'login page'
-    })
-})
+// app.get('/login', (request, response)=>{
+//     response.render('login.hbs', {
+//         pageTitle:'login page'
+//     })
+// })
 
-app.get('/arpist', (request, response)=>{
-    response.render('arpisten.hbs', {
-        pageTitle:'ARPISTEN panel'
-    })
-})
+// app.get('/arpist', (request, response)=>{
+//     response.render('arpisten.hbs', {
+//         pageTitle:'ARPISTEN panel'
+//     })
+// })
 
 app.listen(port, ()=>{
     console.log(`Server is up on port ${port}`)
