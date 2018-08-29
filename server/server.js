@@ -1,4 +1,6 @@
-// frameworks inladen
+// frameworks inladen\
+require('./config/config')
+
 
 // library imports
 const express = require('express')
@@ -6,6 +8,7 @@ const hbs = require('hbs')
 
 const bodyParser = require('body-parser')
 const {ObjectID} = require('mongodb')
+const _ = require('lodash')
 
 // local imports
 const {User} = require('./models/userModel')
@@ -13,7 +16,7 @@ const {Question} = require('./models/questionModel')
 const {mongoose} = require('./db/mongoose')
 
 // server setup
-const port = process.env.PORT || 3000;
+const port = process.env.PORT
 
 
 var app = express();
@@ -39,6 +42,19 @@ app.post('/questions', (req, res)=> {
 
     })
 })
+
+app.patch('/questions/:id', (request, response)=>{
+    const id = request.params.id;
+
+    const body = _.pick(request.body, ['catergory', 'content', 'score', 'direction', 'root', 'published'])
+
+    if(!ObjectID.isValid(id)){
+        return res.status(404).send()
+     }
+    
+
+})
+
 
 app.delete('/questions/:id', (req, res)=>{
     // get ID from param
@@ -89,6 +105,8 @@ app.get('/questions/:id', (req, res)=>{
     })
 
 })
+
+
 
 
 app.listen(port, ()=>{
