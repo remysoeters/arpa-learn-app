@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="questionaire">
+        <div id="questionaire" class="questionaire">
                 <div v-show="pageNumber === index" v-for="(question, index) in questions" class="question" v-bind:id="index" v-bind:name="'question'+index">
                     <div class="questionStem"><p>{{ question.questionStem }} </p></div>
                     <div class="questionCounter"><h3> vraag {{index+1}} van {{questions.length}}</h3></div>
@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                 </div>
-                <div v-show="pageNumber === 4"> 
+                <div v-show="pageNumber === 4" class="questionaire"> 
                     <h1>Bedankt voor het invullen van deze vragenlijst.</h1>
                 </div>
                 <div>
