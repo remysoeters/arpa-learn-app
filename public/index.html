@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,200,300,400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div id="questionaire">
+                <div v-show="pageNumber === index" v-for="(question, index) in questions" class="question" v-bind:id="index" v-bind:name="'question'+index">
+                    <div class="questionStem"><p>{{ question.questionStem }} </p></div>
+                    <div class="questionCounter"><h3> vraag {{index+1}} van {{questions.length}}</h3></div>
+                    <div class="questionContent"><p>{{ question.questionContent }}</p></div>
+                    <div class="questionAnswers">
+                        <ul>
+                            <li v-for="(item, AnswerIndex) in question.questionAnswers">
+                                <span>
+                                    <input type="radio" :value="item.answerValue" :id="item.answerId" :name="question.questionid">
+                                    <label :for="item.answerId" class="questionOptions">{{item.answerContent}}</label>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div v-show="pageNumber === 4"> 
+                    <h1>Bedankt voor het invullen van deze vragenlijst.</h1>
+                </div>
+                <div>
+                        <button v-show="pageNumber > 0" v-on:click="previousPage">Vorige</button>
+                        <button v-on:click="nextPage">Volgende</button>
+                </div>
+        
+            </div>
+        </div>
+    <div>
+            <!-- <button @click="" v-show="">vorige</button> -->
+         
+
+    </div>
+   
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

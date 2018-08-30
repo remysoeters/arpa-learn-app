@@ -1,0 +1,115 @@
+
+    body{
+        font-family: 'Lato';
+        font-weight: 400;
+    }
+    .container{
+    display:grid;
+    background-color:green;
+    width:100%;
+    height:100px;
+    padding:1rem;
+    }
+
+    .question{
+        display:grid;
+        justify-self: center;
+        background-color:white;
+        width:80%;
+        padding:1rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows:min-content min-content 50%;
+        border-bottom: 3px solid pink;
+        place-self:center;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px rgba(0,0,0, .3);
+    }
+    .questionStem{
+        font-size: 1.5rem;
+        color: green;
+        text-align: center;
+        padding:1rem;
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+    .questionCounter{
+        grid-column: 3/4;
+        grid-row: 1/2;
+        place-self:center;
+    }
+    .questionContent{
+
+        font-size: 1rem;
+        color:grey;
+        padding:1rem;
+        grid-column: 1/4;
+        grid-row: 2/3;
+        place-self:center;
+        text-align: center;
+    }
+    .questionAnswers{
+        display: grid;
+        width: 100%;
+        padding:1rem;
+        grid-column: 1/4;
+        grid-row: 3/4;
+        place-self:center;
+        padding:1rem;
+    }
+
+
+    h1{
+        display:block;
+        font-family: Lato;
+        font-weight: 300;
+        font-size: 1.3rem;
+        color:white;
+    }
+    h2{
+        display:block;
+        font-family: Lato;
+        font-weight: 300;
+        font-size: 1.3rem;
+        color:green;
+    }
+    h3{
+        font-family: Lato;
+        font-weight: 300;
+        font-size: 1rem;
+        color:green;
+    }
+
+
+    label.questionOptions{
+        padding:5px;
+        display: block;
+        border-radius: 3px;
+        border:1px solid grey;
+        text-align: center;
+        color:grey;
+        
+    }
+    label.questionOptions:hover{
+        border:solid 1px green;
+        background-color: green;
+        color: white;
+    }
+    input[type=radio]{
+        display:none;
+    }
+
+    input[type=radio]:checked ~ label.questionOptions{
+        border:solid 1px green;
+        color: green;
+    }
+
+
+    ul{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+
+    li{
+        padding:3px;
+    }

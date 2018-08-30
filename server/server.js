@@ -19,11 +19,28 @@ const {mongoose} = require('./db/mongoose')
 const port = process.env.PORT
 
 
-var app = express();
+var server = express();
+server.use(express.static(__dirname + '/public'))
 
-app.use(bodyParser.json())
+server.use(bodyParser.json())
 
-app.post('/questions', (req, res)=> {
+var options = {
+    dotfiles: 'ignore',
+    etag: false,
+    extensions: ['htm', 'html'],
+    index: false,
+    maxAge: '1d',
+    redirect: false,
+    setHeaders: function (res, path, stat) {
+      res.set('x-timestamp', Date.now())
+    }
+  }
+  
+server.use(express.static('public'))
+
+
+
+server.post('/questions', (req, res)=> {
     // maakt nieuwe vraag aan
     const newQuestion = new Question({
         category:req.body.category,
@@ -43,7 +60,7 @@ app.post('/questions', (req, res)=> {
     })
 })
 
-app.patch('/questions/:id', (request, response)=>{
+server.patch('/questions/:id', (request, response)=>{
     const id = request.params.id;
 
     const body = _.pick(request.body, ['catergory', 'content', 'score', 'direction', 'root', 'published'])
@@ -56,7 +73,7 @@ app.patch('/questions/:id', (request, response)=>{
 })
 
 
-app.delete('/questions/:id', (req, res)=>{
+server.delete('/questions/:id', (req, res)=>{
     // get ID from param
     const id = req.params.id
 
@@ -79,7 +96,7 @@ app.delete('/questions/:id', (req, res)=>{
         // error > 400 > send()
 })
 
-app.get('/questions', (req, res)=>{
+server.get('/questions', (req, res)=>{
     Question.find().then((questions)=>{
         res.send({questions})
     },(error)=>{
@@ -87,7 +104,7 @@ app.get('/questions', (req, res)=>{
     })
 })
 
-app.get('/questions/:id', (req, res)=>{
+server.get('/questions/:id', (req, res)=>{
 
     const id = req.params.id
     if(!ObjectID.isValid(id)){
@@ -109,11 +126,11 @@ app.get('/questions/:id', (req, res)=>{
 
 
 
-app.listen(port, ()=>{
+server.listen(port, ()=>{
     console.log(`Server is up on port ${port}`)
 });
 
 
 module.exports = {
-    app
+    server
 }
